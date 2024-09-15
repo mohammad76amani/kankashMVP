@@ -17,44 +17,41 @@ const Page = () => {
 
   return (
 
-    <div className="flex flex-col  w-full h-auto p-1 bg-gray-200 py-8 px-2">
+    <div className="flex flex-col w-full h-auto p-1 bg-gray-200 py-8 px-2 lg:py-12 lg:px-4">
       <Sidebar />
-      <div className="flex flex-col w-full max-w-6xl  justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2">
+      <div className="flex flex-col w-full max-w-8xl justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2 lg:py-6 lg:px-4">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
-      <div className="flex justify-center items-center w-full max-w-6xl">
+      <div className="flex justify-center items-center w-full max-w-8xl">
         <Bubbles />
       </div>
-      <div className="grid grid-cols-9 gap-1 w-full " id="left-to-right">
-        <div className="bg-white rounded-lg shadow-lg grid col-span-8 w-full mt-4 ">
-          <div className="flex flex-col items-center object-cover rounded-lg shadow-lg p-1 ">
-            <Image src="/assets/images/stock-ssd.jpeg" width={400} height={100} alt="image" className="rounded-lg shadow-lg" />
-            <h1 className="text-center mt-4 px-2 text-xl font-bold 	" >هارد های کنکاش استوک</h1>
-            <p className="text-center mt-2 px-2 pb-4 font-semibold" dir='rtl'>داشتن یک فضای ذخیره سازی مطمن و سریع دقدقه خیلی از ماهاست که هار های ssd  این مشکل برامون حل کردن ...</p>
+      <div className="grid grid-cols-9 gap-1 w-full lg:grid-cols-12 lg:gap-4" id="left-to-right">
+        <div className="bg-white rounded-lg shadow-lg col-span-8 lg:col-span-7 w-full mt-4 lg:mt-6">
+          <div className="flex flex-col items-center object-cover rounded-lg shadow-lg p-1">
+            <Image src="/assets/images/stock-ssd.jpeg" width={400} height={100} alt="image" className="rounded-lg shadow-lg lg:w-3/4" />
+            <h1 className="text-center mt-4 px-2 text-xl font-bold lg:text-2xl">هارد های کنکاش استوک</h1>
+            <p className="text-center mt-2 px-2 pb-4 font-semibold lg:text-lg" dir='rtl'>داشتن یک فضای ذخیره سازی مطمن و سریع دقدقه خیلی از ماهاست که هار های ssd  این مشکل برامون حل کردن ...</p>
             <button className="mb-2">
-              <Link href='/' className="px-8 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600">
+              <Link href='/' className="px-8 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600 lg:px-10 lg:py-2">
                 buy
               </Link>
             </button>
           </div>
         </div>
-
-        <div className="bg-white  rounded-lg shadow-lg col-start-2 col-end-10 w-full mt-1" dir='rtl'>
+        <div className="bg-white rounded-lg shadow-lg col-start-2 col-end-10 w-full mt-1 lg:mt-4" dir='rtl'>
           <div className="flex flex-col items-center object-cover rounded-lg shadow-lg p-1">
-            <Image src="/assets/images/computer-banner2.jpeg" width={400} height={100} alt="image" className="rounded-lg shadow-lg" />
-            <h1 className="text-center mt-2 px-2 text-xl font-bold" dir='rtl'>سیستمتو اسمبل کن!!!😎😮😮</h1>
-            <p className="text-center mt-2 px-2 mb-2">اینجا تو کنکاش استوک میتونی خودت کامل سیستمتو اسمبل کنی تازه میتونی کلی اطلاعات راجب قطعه های مختلف به دست بیاری </p>
+            <Image src="/assets/images/computer-banner2.jpeg" width={400} height={100} alt="image" className="rounded-lg shadow-lg lg:w-3/4" />
+            <h1 className="text-center mt-2 px-2 text-xl font-bold lg:text-2xl" dir='rtl'>سیستمتو اسمبل کن!!!😎😮😮</h1>
+            <p className="text-center mt-2 px-2 mb-2 lg:text-lg">اینجا تو کنکاش استوک میتونی خودت کامل سیستمتو اسمبل کنی تازه میتونی کلی اطلاعات راجب قطعه های مختلف به دست بیاری </p>
             <button className="mb-2">
-              <Link href='/' className="px-4 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600">
+              <Link href='/' className="px-4 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600 lg:px-6 lg:py-2">
                 بریم ببینیم چیه🤔
               </Link>
             </button>
           </div>
         </div>
-        {/* services */}
-
         <div className="grid col-span-9 w-full mt-4 px-1">
-          <div className="grid grid-cols-3 gap-4 p-2 mx-1 rounded-lg shadow-lg bg-gray-800 ">
+          <div className="grid grid-cols-3 gap-4 p-2 mx-1 rounded-lg shadow-lg bg-gray-800 lg:w-full lg:col-span-12">
             {/* Icon 1 */}
             <div className="flex flex-col items-center text-center">
               <svg fill="#f97316" height="85px" width="85px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 326.21 326.21" xmlSpace="preserve"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M325.637,189.233l-56.043-135.3c-0.761-1.838-2.221-3.298-4.059-4.059c-1.838-0.762-3.902-0.762-5.74,0L73.176,127.176 c-1.838,0.761-3.298,2.221-4.059,4.059c-0.761,1.838-0.761,3.903,0.001,5.74l56.051,135.3c1.196,2.889,3.989,4.632,6.932,4.632 c0.957,0,1.929-0.185,2.867-0.573l186.611-77.302C325.405,197.447,327.222,193.06,325.637,189.233z M208.674,190.361 L94.596,134.539l155.26-64.312L208.674,190.361z M209.716,207.57c1.038,0.509,2.166,0.764,3.296,0.764 c0.974,0,1.95-0.189,2.871-0.571c1.988-0.823,3.526-2.461,4.224-4.497l16.07-46.881l64.599,35.028l-156.488,64.824l20.911-70.45 L209.716,207.57z M303.949,176.07l-62.838-34.073l22.064-64.365L303.949,176.07z M90.414,149.191l61.124,29.91l-20.342,68.533 L90.414,149.191z"></path> <path d="M7.5,166.616h43.536c4.142,0,7.5-3.357,7.5-7.5c0-4.143-3.358-7.5-7.5-7.5H7.5c-4.142,0-7.5,3.357-7.5,7.5 C0,163.258,3.358,166.616,7.5,166.616z"></path> <path d="M82.073,236.893H7.5c-4.142,0-7.5,3.357-7.5,7.5c0,4.143,3.358,7.5,7.5,7.5h74.573c4.142,0,7.5-3.357,7.5-7.5 C89.573,240.25,86.215,236.893,82.073,236.893z"></path> <path d="M7.5,209.254h59.059c4.142,0,7.5-3.357,7.5-7.5c0-4.143-3.358-7.5-7.5-7.5H7.5c-4.142,0-7.5,3.357-7.5,7.5 C0,205.897,3.358,209.254,7.5,209.254z"></path> </g> </g></svg>
@@ -75,21 +72,14 @@ const Page = () => {
           </div>
         </div>
 
-
-        {/* blogs */}
-        <div className="grid col-span-9 w-full mt-4 px-1">
-          <div className="w-full flex justify-center  ">
+        <div className="grid col-span-9 w-full mt-4 px-1 lg:px-4">
+          <div className="w-full flex justify-center">
             <BlogCard />
           </div>
-
         </div>
-
-
-
-
-
       </div>
-    </div >
+    </div>
+
   );
 };
 

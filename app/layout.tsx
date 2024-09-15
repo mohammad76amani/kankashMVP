@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/(ui)/Footer";
 import Navbar from "@/components/(ui)/(header)/NavBar";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 export const metadata: Metadata = {
   title: "کنکاش استوک",
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body className="font-sans">
         <Navbar />
         <div className="flex flex-col min-h-screen">
-          <div className="flex-grow mb-24">{children}</div>
+          <EdgeStoreProvider>
+          <div className="flex-grow mb-36">{children}</div>
+          </EdgeStoreProvider>
           <Footer />
         </div>
       </body>

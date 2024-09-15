@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { MdAttachMoney, MdBrandingWatermark } from 'react-icons/md';
@@ -42,7 +43,7 @@ const FilterComponent = () => {
     });
   };
 
-  const handleCheckboxChange = (category: CategoryType, option: string|number) => {
+  const handleCheckboxChange = (category: CategoryType, option: string | number) => {
     setSelectedFilters(prevFilters => {
       const updatedCategory = prevFilters[category].includes(option as never)
         ? prevFilters[category].filter((item: string | number) => item !== option)
@@ -93,27 +94,27 @@ const FilterComponent = () => {
   };
 
   return (
-    <div className="lg:fixed z-40 lg:top-0 lg:left-0 lg:h-auto lg:w-64 lg:bg-gray-800 lg:text-white lg:p-6 lg:shadow-lg lg:overflow-y-auto  " >
-      <div className="lg:sticky lg:top-0 lg:w-full lg:p-4 lg:rounded-lg lg:bg-gray-800 lg:shadow-lg ">
+    <div className="lg:fixed z-40 lg:top-0 lg:left-0 lg:h-screen lg:w-auto lg:bg-transparent lg:text-white lg:p-6 lg:shadow-lg lg:overflow-y-auto">
+      <div className="lg:sticky lg:top-0 lg:w-full lg:p-4 lg:rounded-lg lg:bg-transparent lg:shadow-lg">
         {/* Top bar for small screens */}
         <div className="lg:hidden mt-2 mb-4 mx-6 relative top-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 rounded-lg">
           <button
             onClick={() => toggleCategory('price')}
-            className="flex items-center justify-center text-center w-full p-2 bg-gray-900 rounded-md focus:outline-none"
+            className="flex items-center justify-between text-center w-full p-2 bg-gray-900 rounded-md focus:outline-none"
           >
             <span className="font-semibold px-4">دسته بندی ها</span>
             {categories.price.expanded ? <FaChevronUp /> : <FaChevronDown />}
           </button>
         </div>
 
-        <div className={`lg:block ${categories.price.expanded ? 'block' : 'hidden'} mt-8 lg:mt-0 bg-white p-4 rounded-lg shadow-lg`}>
-          {/* Price Range Slider */}
+        {/* Price Range Slider */}
+        <div className={`lg:block ${categories.price.expanded ? 'block' : 'hidden'} mt-8 lg:mt-0 bg-transparent p-4 rounded-lg shadow-lg`}>
           <div className="mb-6">
-            <h3 className="text-2xl font-semibold flex items-center justify-center">
+            <h3 className="text-2xl font-semibold flex items-center text-orange-500">
               <MdAttachMoney className="text-orange-500 mr-2" />
               قیمت
             </h3>
-            <div className="flex justify-between mt-4">
+            <div className="mt-4">
               <input
                 type="range"
                 min="200000"
@@ -122,11 +123,22 @@ const FilterComponent = () => {
                 onChange={(e) => handlePriceChange(e, 0)}
                 className="w-full h-2 bg-orange-500 rounded-lg appearance-none cursor-pointer"
               />
-              
+              <input
+                type="range"
+                min="200000"
+                max="100000000"
+                value={selectedFilters.price[1]}
+                onChange={(e) => handlePriceChange(e, 1)}
+                className="w-full h-2 bg-orange-500 rounded-lg appearance-none cursor-pointer text-orange-500"
+              />
             </div>
-            <div className="flex justify-center mt-2 text-gray-900 text-center font-semibold ">
-              <span className='border-b-2 border-red-500 bg-white rounded-xl shadow-lg px-4 my-2 py-2'>{`${selectedFilters.price[0].toLocaleString('fa-IR')}`} تومان</span>
-             
+            <div className="flex justify-between mt-2 text-gray-900 font-semibold">
+              <span className="border-b-2 border-red-500 bg-white rounded-xl shadow-lg px-4 py-2">
+                {`${selectedFilters.price[0].toLocaleString('fa-IR')}`} تومان
+              </span>
+              <span className="border-b-2 border-red-500 bg-white rounded-xl shadow-lg px-4 py-2">
+                {`${selectedFilters.price[1].toLocaleString('fa-IR')}`} تومان
+              </span>
             </div>
           </div>
 
@@ -136,30 +148,30 @@ const FilterComponent = () => {
               <div key={category} className="mb-4">
                 <button
                   onClick={() => toggleCategory(category)}
-                  className="flex items-center justify-between w-full p-2 bg-gray-100 rounded-md focus:outline-none"
+                  className="flex items-center justify-between w-full p-2 bg-gray-100 rounded-md focus:outline-none text-orange-500"
                   aria-expanded={expanded}
                 >
-                  <span className="flex items-center justify-center text-center"> 
+                  <span className="flex items-center text-dark">
                     {getCategoryIcon(category)}
-                    <span className="ml-2 font-semibold capitalize text-gray-800 text-center">{category}</span>
+                    <span className="ml-2 font-semibold capitalize">{category}</span>
                   </span>
-                  {expanded ? <FaChevronUp className="text-gray-800" /> : <FaChevronDown className="text-gray-800" />}
+                  {expanded ? <FaChevronUp className="text-dark" /> : <FaChevronDown className="text-dark" />}
                 </button>
                 {expanded && (
                   <div className="mt-2 ml-4 space-y-2">
                     {options.map((option) => (
-                      <label key={option} className="flex items-center space-x-2 cursor-pointer">
+                      <label key={option} className="flex items-center space-x-2 cursor-pointer text-orange-500">
                         <input
                           type="checkbox"
                           checked={selectedFilters[category].includes(option as never)}
                           onChange={() => handleCheckboxChange(category, option)}
-                          className="form-checkbox h-5 w-5 text-blue-600 transition duration-150 ease-in-out"
+                          className="form-checkbox h-5 w-5 text-blue-600 transition duration-150 ease-in-out text-orange-500"
                         />
-                        <span className="text-gray-700">
+                        <span className="text-orange-500 font-bold">
                           {category === 'rating' ? (
-                            <span className="flex items-center">
+                            <span className="flex items-center text-orange-500">
                               {renderStars(parseInt(option[0]))}
-                              <span className="ml-1">{option}</span>
+                              <span className="ml-1 text-orange-500">{option}</span>
                             </span>
                           ) : (
                             option
@@ -174,9 +186,8 @@ const FilterComponent = () => {
           ))}
         </div>
       </div>
-
-      {/* Apply Button (visible on small screens) */}
-      
     </div>
   );
-};export default FilterComponent;
+};
+
+export default FilterComponent;
