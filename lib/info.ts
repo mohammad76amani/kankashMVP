@@ -6,6 +6,7 @@ export const kankashInfo = [
     { name: 'محصولات', value: 'products' },
     { name: 'دسته بندی ها', value: 'categories' },
     { name: 'کاربران', value: 'users' },
+    { name: 'آپلود', value: 'upload' },
     
   ];
   
