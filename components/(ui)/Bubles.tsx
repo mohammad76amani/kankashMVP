@@ -44,12 +44,12 @@ const Bubbles = () => {
                 پیشناهادات جذاب امروز
             </p>
             
-            <div className="relative flex justify-center items-center w-full h-full px-4">
+            <div className="relative flex justify-center items-center w-fit h-full px-4">
 
                 {/* Bubble Container */}
                 <div
-                    className={`flex space-x-4 transition-transform duration-1500 ${bubblesInPlace ? "transform translate-x-0" : "transform -translate-x-full"
-                        }`}
+                    // className={`flex space-x-4 transition-transform duration-1500 ${bubblesInPlace ? "transform translate-x-0" : "transform -translate-x-full"
+                    //     }`}
                 >
                     {/* Bubbles */}
                     {bubbleData.map((bubble: BubbleData, index) => (

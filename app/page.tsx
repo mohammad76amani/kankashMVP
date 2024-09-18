@@ -17,7 +17,7 @@ const Page = () => {
   return (
     <div className="flex flex-col w-full h-auto p-1 bg-gray-200 py-8 px-2 lg:py-12 lg:px-4">
       <Sidebar />
-      <div className="flex flex-col w-full max-w-8xl justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2 lg:py-6 lg:px-4">
+      <div className="flex flex-col w-full justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2 lg:py-6 lg:px-4">
         <EmblaCarousel options={OPTIONS} />
       </div>
 
@@ -193,7 +193,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center w-full max-w-8xl">
+      <div className="flex justify-center items-center w-full ">
         <Bubbles />
       </div>
     </div>

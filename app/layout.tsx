@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans">
+      <body className="font-sans m-0 w-auto">
         <Navbar />
         <div className="flex flex-col min-h-screen">
           <EdgeStoreProvider>
