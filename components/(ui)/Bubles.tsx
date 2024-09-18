@@ -40,10 +40,10 @@ const Bubbles = () => {
 
     return (
         <div className="flex flex-col gap-8 justify-center items-center h-auto mt-8">
-            <p className="flex-col text-sm font-semibold text-center rounded-lg px-4 py-2 bg-transparent text-dark border-b-2  ">
+            <p className="flex-col text-sm font-semibold text-center rounded-lg px-4 py-2 bg-transparent text-dark border-b-2 mb-10  ">
                 پیشناهادات جذاب امروز
             </p>
-
+            
             <div className="relative flex justify-center items-center w-full h-full px-4">
 
                 {/* Bubble Container */}
@@ -59,11 +59,11 @@ const Bubbles = () => {
                             style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <Image
-                                width={300}
-                                height={100}
+                                width={100}
+                                height={200}
                                 src={bubble.image}
                                 alt={`Bubble ${index + 1}`}
-                                className="mx-auto w-auto h-auto"
+                                className="mx-auto w-auto h-auto rounded-xl"
                             />
                         </div>
                     ))}
