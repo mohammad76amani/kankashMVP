@@ -9,32 +9,33 @@ import UsersData from "@/components/(ui)/users/usersData";
 import Categories from "../../components/(ui)/categories/categories";
 import { kankashInfo } from "@/lib/info";
 import TableComponent from "@/components/(ui)/table/table";
+import FileUploadForm from "@/components/(ui)/(admin)/(forms)/FileUploadForm";
 const DropdownSwitchComponent: React.FC = () => {
   // State variables for managing selected option, table details, and header
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [tableDetails, setTableDetails] = useState<any>(null);
-  const[header, setHeader] = useState<string>('');
-  const[tablekey, setTablekey] = useState<string>('');
+  const [header, setHeader] = useState<string>('');
+  const [tablekey, setTablekey] = useState<string>('');
   // Handler for dropdown selection change
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
     setTableDetails(null);
     console.log(tablekey);
-    
+
     // Set header based on selected option
-    if(event.target.value==='products'){
+    if (event.target.value === 'products') {
       setHeader('محصولات')
       setTablekey('products')
-    }else if(event.target.value==='banners'){
+    } else if (event.target.value === 'banners') {
       setHeader('بنرها')
       setTablekey('banners')
-    }else if(event.target.value==='categories'){
+    } else if (event.target.value === 'categories') {
       setHeader('دسته بندی ها')
       setTablekey('categories')
-    }else if(event.target.value==='trending'){
+    } else if (event.target.value === 'trending') {
       setHeader('محصولات پرفروش')
       setTablekey('trending')
-    }else if (event.target.value==='users'){
+    } else if (event.target.value === 'users') {
       setHeader('کاربران')
       setTablekey('users')
     }
@@ -47,7 +48,7 @@ const DropdownSwitchComponent: React.FC = () => {
         .then(response => {
           setTableDetails(response.data);
           console.log(response.data);
-        }).catch(error => {console.log(error)});
+        }).catch(error => { console.log(error) });
     }
   }, [selectedOption]);
 
@@ -63,18 +64,20 @@ const DropdownSwitchComponent: React.FC = () => {
       case 'categories':
         return (<Categories />);
       case 'users':
-         return ( <div></div>);
+        return (<div></div>);
+      case 'upload':
+        return (<FileUploadForm />);
       default:
         return <div className="mt-10 text-xl bg-orange-600 text-white px-4 py-2 rounded-md">.لطفا گزینه ای را از منوی بالا انتخاب کنید</div>;
     }
-  };  return (
+  }; return (
     <div className="p-4 flex flex-col justify-center items-center">
       {/* Dropdown for selecting category */}
       <select
         id="category"
         name="category"
         className="mt-1 mb-8 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-        onChange={handleOptionChange }
+        onChange={handleOptionChange}
       >
         {kankashInfo.map((item, index) => (
           <option key={index} value={item.value}>
