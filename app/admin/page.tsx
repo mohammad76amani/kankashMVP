@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react"
-import axios from 'axios'
+import axios from 'axios'   
 import Image from "next/image"
 import Trending from "../../components/(ui)/trending/trending";
 import Banners from "../../components/(ui)/banners/banners";
@@ -10,6 +10,8 @@ import Categories from "../../components/(ui)/categories/categories";
 import { kankashInfo } from "@/lib/info";
 import TableComponent from "@/components/(ui)/table/table";
 import FileUploadForm from "@/components/(ui)/(admin)/(forms)/FileUploadForm";
+import{Orders} from "@/lib/table";
+import { Divide } from "lucide-react";
 const DropdownSwitchComponent: React.FC = () => {
   // State variables for managing selected option, table details, and header
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -17,6 +19,7 @@ const DropdownSwitchComponent: React.FC = () => {
   const [header, setHeader] = useState<string>('');
   const [tablekey, setTablekey] = useState<string>('');
   // Handler for dropdown selection change
+  
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
     setTableDetails(null);
@@ -39,6 +42,10 @@ const DropdownSwitchComponent: React.FC = () => {
       setHeader('کاربران')
       setTablekey('users')
     } else if (event.target.value === 'upload') {
+    }else if (event.target.value === 'orders') {
+      setHeader('سفارشات')
+      setTablekey('orders')
+      setTableDetails(Orders)
     }
   };
 
@@ -68,6 +75,8 @@ const DropdownSwitchComponent: React.FC = () => {
         return (<div></div>);
       case 'upload':
         return (<FileUploadForm />);
+        case 'orders':
+        return (<div></div>);
       default:
         return <div className="mt-10 text-xl bg-orange-600 text-white px-4 py-2 rounded-md">.لطفا گزینه ای را از منوی بالا انتخاب کنید</div>;
     }

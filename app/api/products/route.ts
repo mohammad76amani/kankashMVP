@@ -39,6 +39,10 @@ export const POST = async (req: NextRequest) => {
       const brand = formData.get('brand');
       const category = formData.get('category');
       const color = formData.get('color');
+      const gpu = formData.get('gpu');
+      const hard = formData.get('hard');
+      const ram = formData.get('ram');
+      const cpu = formData.get('cpu');
   
       // You can now create the new product object here or save it to your MongoDB
       const newProduct = {
@@ -49,6 +53,10 @@ export const POST = async (req: NextRequest) => {
         brand,
         category,
         color,
+        gpu,
+        hard,
+        ram,
+        cpu,
       };
   
        const savedProduct = await Products.create(newProduct); 

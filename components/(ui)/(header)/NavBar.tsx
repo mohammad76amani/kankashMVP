@@ -13,7 +13,12 @@ const Navbar: React.FC = () => {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach (icon => {  
+    icon.addEventListener('click', (event) => {
+      icon.classList.toggle("open");
+    });
+  });
   return (
     <>
       <div className="flex flex-row overflow-hidden mx-auto">
@@ -24,6 +29,7 @@ const Navbar: React.FC = () => {
           id="sidebar"
         >
           <div className="p-4 text-start text-orange-600">
+            
             <h1 className="text-2xl text-center mx-auto animate-pulse">
               <Image
                 width={50}
