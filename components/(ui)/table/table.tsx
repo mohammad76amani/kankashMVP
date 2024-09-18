@@ -1,22 +1,36 @@
+import axios from 'axios';
 import Image from 'next/image';
-
 // Define the TableComponent that takes data and header as props
-const TableComponent = ({ data, header }: { data: Record<string, unknown>[]; header: string }) => {
+const TableComponent = ({ data, header, tableKey }: { data: Record<string, unknown>[]; header: string; tableKey: string }) => {
   // Function to check if a string is an image URL
   const isImageUrl = (url: string) => {
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    return url.match(/\.(jpeg|jpg|gif|png|webpec)$/) != null;
   };
 
   // Function to check if an item has an image URL
   const hasImage = (item: Record<string, unknown>) => {
     return Object.values(item).some(val => typeof val === 'string' && isImageUrl(val));
   };
-
+  const isPhoneNumber = (value: string) => {
+    return /^\d{10}$/.test(value);
+  };
+  
+  // Function to handle item deletion
+  const handleDelete = async (id: string) => {
+    console.log(tableKey,id );
+    try {
+      await axios.delete(`/api/${tableKey}/${id}`);
+      
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
+  };
   // Filter the data to only include items with images
-  const filteredData = data.filter(hasImage);
-  // Get the column names, excluding '__v'
-  const columns = filteredData.length > 0 ? Object.keys(filteredData[0]).filter(col => col !== '__v') : [];
+  // const filteredData = data.filter(hasImage);
 
+  // // Get the column names, excluding '__v'
+  // const columns = filteredData.length > 0 ? Object.keys(filteredData[0]).filter(col => col !== '__v') : [];
+  const columns = Object.keys(data[0]).filter(col => col !== '__v' && col !== 'password');
   return (
     <div className="mt-8 max-w-full">
       <h2 className="text-2xl mb-4 text-end">{header}</h2>
@@ -28,25 +42,38 @@ const TableComponent = ({ data, header }: { data: Record<string, unknown>[]; hea
               <th className="py-2 px-4 border-b border-r border-gray-300">Index</th>
               {columns.map((col: string, index: number) => (
                 <th key={index} className="py-2 px-4 border-b border-r border-gray-300">{col}</th>
+
               ))}
+              <th className="py-2 px-4 border-b border-r border-gray-300">Actions</th>
+
             </tr>
           </thead>
 
           {/* Table body */}
           <tbody>
-            {filteredData.map((item: Record<string, unknown>, rowIndex: number) => (
+            {data.map((item: Record<string, unknown>, rowIndex: number) => (
               <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
-                <td className="py-2 px-4 border-b border-r border-gray-300">{rowIndex }</td>
+                <td className="py-2 px-4 border-b border-r border-gray-300">{rowIndex}</td>
                 {columns.map((col: string, idx: number) => (
                   <td key={idx} className="py-2 px-4 border-b border-r border-gray-300">
-                    {/* Render image if the value is an image URL, otherwise render as string */}
                     {typeof item[col] === 'string' && isImageUrl(item[col] as string) ? (
                       <Image src={item[col] as string} alt="Table image" width={100} height={100} />
+                    ) : isPhoneNumber(String(item[col])) ? (
+                      <a href={`tel:+98${String(item[col])}`} className='flex gap-x-2 group hover:text-green-500'>+98{String(item[col])} <svg className='group-hover:fill-green-500' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M162-120q-18 0-30-12t-12-30v-162q0-13 9-23.5t23-14.5l138-28q14-2 28.5 2.5T342-374l94 94q38-22 72-48.5t65-57.5q33-32 60.5-66.5T681-524l-97-98q-8-8-11-19t-1-27l26-140q2-13 13-22.5t25-9.5h162q18 0 30 12t12 30q0 125-54.5 247T631-329Q531-229 409-174.5T162-120Zm556-480q17-39 26-79t14-81h-88l-18 94 66 66ZM360-244l-66-66-94 20v88q41-3 81-14t79-28Zm358-356ZM360-244Z" /></svg>
+                      </a>
                     ) : (
                       String(item[col])
                     )}
                   </td>
                 ))}
+                <td className="py-2 px-4 border-b border-r border-gray-300">
+                  <button
+                    onClick={() => handleDelete(String(item._id))}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

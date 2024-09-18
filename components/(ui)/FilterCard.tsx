@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { MdAttachMoney, MdBrandingWatermark } from 'react-icons/md';
 
@@ -22,8 +22,11 @@ interface SelectedFiltersState {
   brand: string[];
   rating: string[];
 }
-
-const FilterComponent = () => {
+interface FilterComponentProps {
+  onFilterChange: (filters: SelectedFiltersState) => void;
+}
+const FilterComponent: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
+  const [filteredData, setFilteredData] = useState(null);
   const [categories, setCategories] = useState<CategoriesState>({
     price: { expanded: true, options: [] },
     brand: { expanded: false, options: ['Apple', 'Samsung', 'Google', 'Sony', 'LG'] },
@@ -36,11 +39,9 @@ const FilterComponent = () => {
     rating: []
   });
 
-  const toggleCategory = (category: CategoryType) => {
-    setCategories({
-      ...categories,
-      [category]: { ...categories[category], expanded: !categories[category].expanded }
-    });
+  const applyFilters = () => {
+    console.log('Applied filters:', selectedFilters);
+    onFilterChange(selectedFilters);
   };
 
   const handleCheckboxChange = (category: CategoryType, option: string | number) => {
@@ -48,22 +49,33 @@ const FilterComponent = () => {
       const updatedCategory = prevFilters[category].includes(option as never)
         ? prevFilters[category].filter((item: string | number) => item !== option)
         : [...prevFilters[category], option as never];
-      return { ...prevFilters, [category]: updatedCategory };
+      const newFilters = { ...prevFilters, [category]: updatedCategory };
+      applyFilters();
+      return newFilters;
     });
   };
-
+  
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newPriceRange = [...selectedFilters.price];
     newPriceRange[index] = parseInt(event.target.value, 10);
     setSelectedFilters({ ...selectedFilters, price: newPriceRange });
+    applyFilters();
+  };
+  
+  const handleFilterChange = (filters: SetStateAction<null>) => {
+    setFilteredData(filters);
+    // You can perform additional actions with the filtered data here
+  };
+
+  const toggleCategory = (category: CategoryType) => {
+    setCategories({
+      ...categories,
+      [category]: { ...categories[category], expanded: !categories[category].expanded }
+    });
   };
 
   const resetFilters = () => {
     setSelectedFilters({ price: [0, 1000], brand: [], rating: [] });
-  };
-
-  const applyFilters = () => {
-    console.log('Applied filters:', selectedFilters);
   };
 
   const renderStars = (rating: number) => {
@@ -189,5 +201,4 @@ const FilterComponent = () => {
     </div>
   );
 };
-
 export default FilterComponent;

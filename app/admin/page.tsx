@@ -14,22 +14,29 @@ const DropdownSwitchComponent: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [tableDetails, setTableDetails] = useState<any>(null);
   const[header, setHeader] = useState<string>('');
-
+  const[tablekey, setTablekey] = useState<string>('');
   // Handler for dropdown selection change
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
     setTableDetails(null);
+    console.log(tablekey);
+    
     // Set header based on selected option
     if(event.target.value==='products'){
       setHeader('محصولات')
+      setTablekey('products')
     }else if(event.target.value==='banners'){
       setHeader('بنرها')
+      setTablekey('banners')
     }else if(event.target.value==='categories'){
       setHeader('دسته بندی ها')
+      setTablekey('categories')
     }else if(event.target.value==='trending'){
       setHeader('محصولات پرفروش')
+      setTablekey('trending')
     }else if (event.target.value==='users'){
       setHeader('کاربران')
+      setTablekey('users')
     }
   };
 
@@ -82,7 +89,7 @@ const DropdownSwitchComponent: React.FC = () => {
       </div>
 
       {/* Render table component if table details are available */}
-      {tableDetails && <TableComponent header={header} data={tableDetails} />}
+      {tableDetails && <TableComponent header={header} data={tableDetails} tableKey={tablekey} />}
     </div>
   );
 };

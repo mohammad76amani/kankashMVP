@@ -1,13 +1,21 @@
+'use client'
 import FilterComponent from "@/components/(ui)/FilterCard";
 import ProductCard from "@/components/(ui)/ProductCard";
+import { useState } from "react";
 
 const Page = () => {
+  const [filteredData, setFilteredData] = useState(null);
+
+const handleFilterChange = (filters:any) => {
+  setFilteredData(filters);
+};
+
   return (
     <div className="w-full h-auto p-4 bg-gray-200 py-8 px-2 lg:px-12 my-2 rounded-lg mx-1 overflow-x-auto">
 
       {/* Filter Component */}
       <div className="mb-8">
-        <FilterComponent />
+      <FilterComponent onFilterChange={handleFilterChange} />
       </div>
 
       {/* Page Title and Description */}

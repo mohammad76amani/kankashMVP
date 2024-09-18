@@ -2,9 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
+import axios from "axios";
+interface BubbleData {
+    id: string;
+    image: string;
+  }
 const Bubbles = () => {
     const [bubblesInPlace, setBubblesInPlace] = useState(false);
+    const [bubbleData, setBubbleData] = useState<[]>([]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -12,10 +17,30 @@ const Bubbles = () => {
         }, 0); // 1.5 seconds delay for the bubbles to complete the bounce animation
         return () => clearTimeout(timer);
     }, []);
+    useEffect(() => {
+        const fetchBubbleData = async () => {
+            try {
+                const response = await axios.get('/api/trending'); // Adjust the endpoint as needed
+                setBubbleData(response.data);
+              
+                
+                
+            } catch (error) {
+                console.error('Error fetching bubble data:', error);
+            }
+        };
+
+        fetchBubbleData();
+
+        const timer = setTimeout(() => {
+            setBubblesInPlace(true);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <div className="flex flex-col gap-8 justify-center items-center h-auto mt-8">
-            <p className="flex-col text-sm font-semibold text-center rounded-lg px-4 py-2 bg-transparent text-dark border-b-2  border-gray-500 shadow-lg">
+            <p className="flex-col text-sm font-semibold text-center rounded-lg px-4 py-2 bg-transparent text-dark border-b-2  ">
                 پیشناهادات جذاب امروز
             </p>
 
@@ -27,21 +52,22 @@ const Bubbles = () => {
                         }`}
                 >
                     {/* Bubbles */}
-                    {[...Array(5)].map((_, index) => (
+                    {bubbleData.map((bubble: BubbleData, index) => (
                         <div
-                            key={index}
-                            className={`w-auto h-auto  rounded-full bounce shadow-lg animate-bounce transition-all duration-1000`}
+                            key={bubble.id}
+                            className={`min-w-[100px] min-h-[50px] rounded-full bounce  animate-bounce transition-all duration-1000`}
                             style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <Image
                                 width={300}
                                 height={100}
-                                src="/logo.png"
-                                alt="Logo"
-                                className="mx-auto w-aot h-auto"
+                                src={bubble.image}
+                                alt={`Bubble ${index + 1}`}
+                                className="mx-auto w-auto h-auto"
                             />
                         </div>
                     ))}
+
                 </div>
             </div>
         </div>

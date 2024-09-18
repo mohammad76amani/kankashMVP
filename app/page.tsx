@@ -20,7 +20,7 @@ const Page = () => {
     <div className="flex flex-col w-full h-auto p-1 bg-gray-200 py-8 px-2 lg:py-12 lg:px-4">
       <Sidebar />
       <div className="flex flex-col w-full max-w-8xl justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2 lg:py-6 lg:px-4">
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+        <EmblaCarousel options={OPTIONS} />
       </div>
       <div className="flex justify-center items-center w-full max-w-8xl">
         <Bubbles />
