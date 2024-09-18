@@ -38,6 +38,7 @@ const DropdownSwitchComponent: React.FC = () => {
     } else if (event.target.value === 'users') {
       setHeader('کاربران')
       setTablekey('users')
+    } else if (event.target.value === 'upload') {
     }
   };
 
