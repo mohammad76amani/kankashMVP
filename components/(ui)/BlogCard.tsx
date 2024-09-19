@@ -43,6 +43,7 @@ const features: Feature[] = [
   },
 ];
 
+
 const BlogCard = () => {
   return (
     <ul className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-center p-8  ">
@@ -54,7 +55,7 @@ const BlogCard = () => {
           <div className="order-1 sm:ml-6 xl:ml-0">
             <h3 className="mb-1 text-slate-900 font-semibold ">
               <span
-                className={`mb-1 block text-sm leading-6 sm:text-xl text-orange-400 font-bold text-${
+                className={`mb-1 block border-b-gray-300  border-2 text-sm leading-6 sm:text-xl text-orange-400 font-bold text-${
                   index === 0 ? "indigo" : index === 1 ? "purple" : "cyan"
                 }-500`}
               >
@@ -62,7 +63,7 @@ const BlogCard = () => {
               </span>
               {feature.title}
             </h3>
-            <div className="prose prose-slate prose-sm text-slate-600">
+            <div className="prose prose-slate prose-sm text-slate-500">
               <p>{feature.description}</p>
             </div>
             <a
