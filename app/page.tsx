@@ -210,16 +210,16 @@ const Page = () => {
               className="rounded-lg shadow-lg lg:w-3/4"
             />
             <h1
-              className="text-center mt-2 px-2 text-xl font-bold lg:text-2xl"
+              className="text-center mt-3 px-2 text-xl font-bold lg:text-2xl"
               dir="rtl"
             >
               سیستمتو اسمبل کن!!!😎😮😮
             </h1>
-            <p className="text-center mt-2 px-2 mb-2 lg:text-lg">
+            <p className="text-center my-4 px-2  lg:text-lg">
               اینجا تو کنکاش استوک میتونی خودت کامل سیستمتو اسمبل کنی تازه
               میتونی کلی اطلاعات راجب قطعه های مختلف به دست بیاری{" "}
             </p>
-            <button className="mb-2">
+            <button className="mb-4">
               <Link
                 href="/"
                 className="px-4 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600 lg:px-6 lg:py-2"

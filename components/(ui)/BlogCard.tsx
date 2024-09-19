@@ -43,6 +43,7 @@ const features: Feature[] = [
   },
 ];
 
+
 const BlogCard = () => {
   return (
     <ul className="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-center p-8  ">
