@@ -355,7 +355,6 @@ const Page = () => {
             {" "}
             <ProductCard />
           </div>
-          
         </div>
 
         <div className="grid col-span-9 w-full mt-4 px-1 lg:px-4 ">
