@@ -20,12 +20,12 @@ const ProductCard = () => {
 
                 {/* Product Image */}
                 <div className="flex justify-center items-center mb-6">
-                    <Image src='/assets/images/assus.jfif' width="400" height="600" alt="Assus T576574" className="rounded-lg shadow-lg w-full h-auto" />
+                    <Image src='/assets/images/assus.jfif' width="150" height="200" alt="Assus T576574" className="rounded-lg shadow-lg w-50 h-15" />
                 </div>
 
                 {/* Product Details */}
                 <div className="text-center">
-                    <p className="text-xl lg:text-2xl font-bold text-gray-800 mb-4">Assus T576574</p>
+                    <p className="text-lg lg:text-2xl font-bold text-gray-800 mb-4">Assus T576574</p>
                     <div className="flex flex-wrap justify-center gap-2 mb-4 lg:gap-3">
                         <div className="px-3 py-1 bg-gradient-to-t from-orange-700 to-gray-800 text-white rounded-xl text-sm lg:text-base font-medium">Core i7</div>
                         <div className="px-3 py-1 bg-gradient-to-t from-orange-700 to-gray-800 text-white rounded-xl text-sm lg:text-base font-medium">2GB RAM</div>
@@ -33,7 +33,7 @@ const ProductCard = () => {
                         <div className="px-3 py-1 bg-gradient-to-t from-orange-700 to-gray-800 text-white rounded-xl text-sm lg:text-base font-medium">GTX 80-40</div>
                     </div>
                     <Link href='/'>
-                        <div className="inline-block px-4 py-2 lg:px-6 lg:py-3 bg-gradient-to-b from-orange-700 to-gray-800 text-white rounded-xl text-lg lg:text-xl font-medium">
+                        <div className="inline-block px-4 py-2 lg:px-6 lg:py-3 bg-gradient-to-b from-orange-700 to-gray-800 text-white rounded-xl text-sm lg:text-xl font-medium">
                             تومان 13,000,000
                         </div>
                     </Link>
