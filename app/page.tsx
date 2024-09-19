@@ -9,6 +9,7 @@ import ProductCard from "@/components/(ui)/ProductCard";
 import BlogCard from "@/components/(ui)/BlogCard";
 import connect from "@/lib/data";
 
+
 const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };
 const SLIDE_COUNT = 5;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
@@ -20,13 +21,156 @@ const Page = () => {
       <div className="flex flex-col w-full justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2 lg:py-6 lg:px-4">
         <EmblaCarousel options={OPTIONS} />
       </div>
+      <div className="flex flex-row items-center justify-evenly mt-5 bg-gray-200  text-black rounded-xl p-4 ml-7">
+        <div className="flex flex-col items-center text-center">
+          {" "}
+          <svg
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                d="M2.84436 13V7.50664C2.84436 5.48403 4.48401 3.84439 6.50661 3.84439H17.4933C19.516 3.84439 21.1556 5.48403 21.1556 7.50663V13C21.1556 15.0226 19.5159 16.6623 17.4933 16.6623H6.50661C4.484 16.6623 2.84436 15.0226 2.84436 13Z"
+                stroke="#f97316"
+                stroke-width="1.7"
+              ></path>{" "}
+              <path
+                d="M6.03967 20.3245H17.9603"
+                stroke="#f97316"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              ></path>{" "}
+            </g>
+          </svg>
+          <h5 className="text-xl font-semibold ">Desktop</h5>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          {" "}
+          <svg
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                d="M19.6471 15.5357H4.35294M19.6471 15.5357V8C19.6471 6.11438 19.6471 5.17157 19.0613 4.58579C18.4755 4 17.5327 4 15.6471 4H8.35294C6.46732 4 5.52451 4 4.93873 4.58579C4.35294 5.17157 4.35294 6.11438 4.35294 8V15.5357M19.6471 15.5357L21.3911 17.3358C21.4356 17.3818 21.4579 17.4048 21.4787 17.4276C21.7998 17.7802 21.9843 18.2358 21.999 18.7124C22 18.7433 22 18.7753 22 18.8393C22 18.9885 22 19.0631 21.996 19.1261C21.9325 20.1314 21.1314 20.9325 20.1261 20.996C20.0631 21 19.9885 21 19.8393 21H4.16068C4.01148 21 3.93688 21 3.87388 20.996C2.86865 20.9325 2.06749 20.1314 2.00398 19.1261C2 19.0631 2 18.9885 2 18.8393C2 18.7753 2 18.7433 2.00096 18.7124C2.01569 18.2358 2.20022 17.7802 2.52127 17.4276C2.54208 17.4048 2.56438 17.3818 2.60888 17.3358L4.35294 15.5357"
+                stroke="#f97316"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              ></path>{" "}
+              <path
+                d="M9.5 18.5H14.5"
+                stroke="#f97316"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              ></path>{" "}
+              <path
+                d="M12.75 6.75C12.75 7.16421 12.4142 7.5 12 7.5C11.5858 7.5 11.25 7.16421 11.25 6.75C11.25 6.33579 11.5858 6 12 6C12.4142 6 12.75 6.33579 12.75 6.75Z"
+                fill="#f97316"
+              ></path>{" "}
+            </g>
+          </svg>
+          <h5 className="text-xl font-semibold">Laptops</h5>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <svg
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                d="M7 9C7 9.55228 6.55228 10 6 10C5.44772 10 5 9.55228 5 9C5 8.44772 5.44772 8 6 8C6.55228 8 7 8.44772 7 9Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M7 12C7 12.5523 6.55228 13 6 13C5.44772 13 5 12.5523 5 12C5 11.4477 5.44772 11 6 11C6.55228 11 7 11.4477 7 12Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M10 12C10 12.5523 9.55228 13 9 13C8.44772 13 8 12.5523 8 12C8 11.4477 8.44772 11 9 11C9.55228 11 10 11.4477 10 12Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M10 9C10 9.55228 9.55228 10 9 10C8.44772 10 8 9.55228 8 9C8 8.44772 8.44772 8 9 8C9.55228 8 10 8.44772 10 9Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M13 9C13 9.55228 12.5523 10 12 10C11.4477 10 11 9.55228 11 9C11 8.44772 11.4477 8 12 8C12.5523 8 13 8.44772 13 9Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M16 9C16 9.55228 15.5523 10 15 10C14.4477 10 14 9.55228 14 9C14 8.44772 14.4477 8 15 8C15.5523 8 16 8.44772 16 9Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M16 12C16 12.5523 15.5523 13 15 13C14.4477 13 14 12.5523 14 12C14 11.4477 14.4477 11 15 11C15.5523 11 16 11.4477 16 12Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M19 9C19 9.55228 18.5523 10 18 10C17.4477 10 17 9.55228 17 9C17 8.44772 17.4477 8 18 8C18.5523 8 19 8.44772 19 9Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M19 12C19 12.5523 18.5523 13 18 13C17.4477 13 17 12.5523 17 12C17 11.4477 17.4477 11 18 11C18.5523 11 19 11.4477 19 12Z"
+                fill="#f97316"
+              ></path>{" "}
+              <path
+                d="M16 5C18.8284 5 20.2426 5 21.1213 5.87868C22 6.75736 22 8.17157 22 11V13C22 15.8284 22 17.2426 21.1213 18.1213C20.2426 19 18.8284 19 16 19H8C5.17157 19 3.75736 19 2.87868 18.1213C2 17.2426 2 15.8284 2 13V11C2 8.17157 2 6.75736 2.87868 5.87868C3.75736 5 5.17157 5 8 5H12"
+                stroke="#f97316"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              ></path>{" "}
+              <path
+                d="M7 16H17"
+                stroke="#f97316"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              ></path>{" "}
+            </g>
+          </svg>
+          <h5 className="font-semibold text-xl">Accessories</h5>
+        </div>
+      </div>
 
       <div
         className=" grid-cols-9 gap-1 w-full lg:grid-cols-12 lg:gap-4"
         id="left-to-right"
       >
-        <div className=" bg-white rounded-lg  shadow-lg  w-full mt-4 lg:mt-6 mr-5">
-          <div className="flex flex-col items-center object-cover rounded-lg shadow-lg p-1 w-full p">
+        <div className=" bg-white rounded-lg shadow-lg w-auto ml-10 mt-4 lg:mt-6 ">
+          <div className="flex flex-col items-center object-cover rounded-lg shadow-lg p-1 w-full">
             <Image
               src="/assets/images/stock-ssd.jpeg"
               width={400}
@@ -55,7 +199,7 @@ const Page = () => {
           </div>
         </div>
         <div
-          className="bg-white rounded-lg shadow-lg col-start-2 col-end-10 w-full mt-1 lg:mt-4"
+          className="bg-white rounded-lg shadow-lg col-start-2 col-end-10 w-auto mr-10 mt-3 lg:mt-4"
           dir="rtl"
         >
           <div className="flex flex-col items-center object-cover rounded-lg shadow-lg p-1">
@@ -67,16 +211,16 @@ const Page = () => {
               className="rounded-lg shadow-lg lg:w-3/4"
             />
             <h1
-              className="text-center mt-2 px-2 text-xl font-bold lg:text-2xl"
+              className="text-center mt-3 px-2 text-xl font-bold lg:text-2xl"
               dir="rtl"
             >
               سیستمتو اسمبل کن!!!😎😮😮
             </h1>
-            <p className="text-center mt-2 px-2 mb-2 lg:text-lg">
+            <p className="text-center my-4 px-2  lg:text-lg">
               اینجا تو کنکاش استوک میتونی خودت کامل سیستمتو اسمبل کنی تازه
               میتونی کلی اطلاعات راجب قطعه های مختلف به دست بیاری{" "}
             </p>
-            <button className="mb-2">
+            <button className="mb-4">
               <Link
                 href="/"
                 className="px-4 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600 lg:px-6 lg:py-2"
@@ -184,6 +328,33 @@ const Page = () => {
                 ضمانت کیفیت
               </h6>
             </div>
+          </div>
+        </div>
+
+        <div className="flex overflow-x-auto space-x-4 p-4">
+          <div className="shrink-0 w-fit h-fit  rounded-lg">
+            {" "}
+            <ProductCard />
+          </div>
+          <div className="shrink-0 w-fit h-fit  rounded-lg">
+            {" "}
+            <ProductCard />
+          </div>
+          <div className="shrink-0 w-fit h-fit  rounded-lg">
+            {" "}
+            <ProductCard />
+          </div>
+          <div className="shrink-0 w-fit h-fit  rounded-lg">
+            {" "}
+            <ProductCard />
+          </div>
+          <div className="shrink-0 w-fit h-fit  rounded-lg">
+            {" "}
+            <ProductCard />
+          </div>
+          <div className="shrink-0 w-fit h-fit  rounded-lg">
+            {" "}
+            <ProductCard />
           </div>
         </div>
 
