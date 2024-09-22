@@ -1,7 +1,8 @@
 "use client";
+import Products from "@/models/Products";
 import axios from "axios";
-import { useEffect, useState } from "react";
-
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, use, useEffect, useState } from "react";
+import Image from "next/image";
 const Sidebar = () => {
   const [hovered, setHovered] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null >(null);
@@ -15,24 +16,15 @@ const Sidebar = () => {
     });
   }, []);
   
-  const subcategories = [
-    {
-      name: "Laptops",
-      subcategories: [
-        { name: "Asus", vector: laptopSVG },
-        { name: "Lenovo", vector: laptopSVG },
-        { name: "HP", vector: laptopSVG },
-        { name: "Dell", vector: laptopSVG },
-        { name: "Acer", vector: laptopSVG },
-        { name: "MSI", vector: laptopSVG },
-        { name: "Apple", vector: laptopSVG },
-        { name: "Alienware", vector: laptopSVG },
-        { name: "Razer", vector: laptopSVG },
-      ],
-    },
-  ];
+  const [subcategories,setSubcategories] = useState<any[]>([]);
+  useEffect(() => {
+    axios.get("/api/products").then((response) => {
+      console.log(response.data);
+      setProducts(response.data)
+    });
+  }, [categories]);
 
- 
+ const [products,setProducts]=useState<any[]>([]);
   return (
     <div
       className={`fixed my-24 z-40 md:my-4 lg:my-4 rounded-lg top-0 right-0 h-auto pr-2 bg-tranq  transition-all duration-500 ease-in-out ${
@@ -49,11 +41,13 @@ const Sidebar = () => {
           <div
             key={index}
             className="mb-6 w-full flex flex-col items-start"
-            onMouseEnter={() => setHoveredCategory(category.name)}
+            onMouseEnter={() => {setHoveredCategory(category.name)
+              
+            }}
             onMouseLeave={() => setHoveredCategory(null)}
           >
             <div className="flex items-center">
-              <div className="ml-2 py-1 border-l-8 border-white px-2 bg-orange-500 rounded-lg">{category.vector}</div>
+              <Image className="ml-4" width={40} height={40} src={category.image} alt={category.name} />
               <div
                 className={`ml-4 py-1 text-lg border-2 px-4 rounded-lg  w-44 text-center font-semibold border-orange-500 shadow-lg text-white font-mono transition-opacity duration-500 ease-in-out ${
                   hovered ? "opacity-100" : "opacity-0"
@@ -69,9 +63,9 @@ const Sidebar = () => {
             </div>
 
             {/* Render Subcategories if Hovered */}
-            {hoveredCategory === category.name && category.name === "Laptops" && (
+            {hoveredCategory === category.name && category.name.toLowerCase() === "laptop"&& (
               <div className="ml-8 mt-2">
-                {subcategories[0].subcategories.map((subcategory, subIndex) => (
+                {subcategories && subcategories[0]?.subcategories.map((subcategory: { vector: React.ReactNode; name: string }, subIndex: React.Key | null | undefined) => (
                   <div
                     key={subIndex}
                     className="flex items-center my-1 mx-auto"
@@ -80,7 +74,7 @@ const Sidebar = () => {
                     <div
                       className="text-md text-white border-orange-500 border-2 px-4 rounded-lg w-44 mx-auto justify-center font-mono font-bold text-center"
                       style={{
-                        animation: `typewriter 1.5s steps(${subcategory.name.length}) forwards, `,
+                        animation: `typewriter 1.5s steps(${subcategory.name.toString().length}) forwards, `,
                       }}
                     >
                       {subcategory.name}
