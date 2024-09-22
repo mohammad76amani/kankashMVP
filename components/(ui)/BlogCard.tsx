@@ -15,7 +15,7 @@ const features: Feature[] = [
       "A set of 450+ free MIT-licensed SVG icons. Available as basic SVG icons and via first-party React and Vue libraries.",
     category: "Heroicons",
     imageUrl: "/assets/images/computer-banner2.jpeg",
-    learnMoreLink: "#",
+    learnMoreLink: "/blogs",
   },
   {
     title: "Seamless SVG background patterns by the makers of Tailwind CSS.",
@@ -23,7 +23,7 @@ const features: Feature[] = [
       "A collection of over 100 free MIT-licensed high-quality SVG patterns for you to use in your web projects.",
     category: "Hero Patterns",
     imageUrl: "/assets/images/computer-banner3.jpeg",
-    learnMoreLink: "#",
+    learnMoreLink: "/blogs"
   },
   {
     title: "Seamless SVG background patterns by the makers of Tailwind CSS.",
@@ -31,7 +31,7 @@ const features: Feature[] = [
       "A collection of over 100 free MIT-licensed high-quality SVG patterns for you to use in your web projects.",
     category: "Hero Patterns",
     imageUrl: "/assets/images/computer-banner3.jpeg",
-    learnMoreLink: "#",
+    learnMoreLink: "/blogs"
   },
   {
     title: "Seamless SVG background patterns by the makers of Tailwind CSS.",
@@ -39,7 +39,7 @@ const features: Feature[] = [
       "A collection of over 100 free MIT-licensed high-quality SVG patterns for you to use in your web projects.",
     category: "Hero Patterns",
     imageUrl: "/assets/images/computer-banner3.jpeg",
-    learnMoreLink: "#",
+    learnMoreLink: "/blogs"
   },
 ];
 

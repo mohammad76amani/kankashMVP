@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -19,8 +19,9 @@ const Navbar: React.FC = () => {
       <div className="flex flex-row overflow-hidden mx-auto">
         {/* Sidebar */}
         <div
-          className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-40 bg-gray-800 bg-opacity-90 text-orange-500 w-48 px-4 h-auto overflow-y-auto transition-transform ${isSidebarOpen ? "translate-y-0" : "-translate-y-full"
-            } ease-in-out duration-500 rounded-lg shadow-lg`}
+          className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-40 bg-gray-800 bg-opacity-90 text-orange-500 w-48 px-4 h-auto overflow-y-auto transition-transform ${
+            isSidebarOpen ? "translate-y-0" : "-translate-y-full"
+          } ease-in-out duration-500 rounded-lg shadow-lg`}
           id="sidebar"
         >
           <div className="p-4 text-start text-orange-600">
@@ -35,26 +36,28 @@ const Navbar: React.FC = () => {
             </h1>
             <ul className="mt-4 font-semibold" dir="rtl">
               <li className="mb-2">
-                <a href="#" className="block hover:text-indigo-400">
+                <Link href="/" className="block hover:text-indigo-400">
                   خانه
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="block hover:text-indigo-400">
+                <Link href="/guarantee" className="block hover:text-indigo-400">
                   درباره ما
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="block hover:text-indigo-400">
+                <Link
+                  href="/hard-drive-repair"
+                  className="block hover:text-indigo-400"
+                >
                   تعمیر و تعویض هارد
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="block hover:text-indigo-400">
+                <Link href="/Store" className="block hover:text-indigo-400">
                   لیست محصولات
-                </a>
+                </Link>
               </li>
-
             </ul>
           </div>
         </div>
@@ -111,8 +114,12 @@ const Navbar: React.FC = () => {
                 </div>
 
                 {/* Center: Search Bar */}
-                <div className="flex-1 mx-4" dir="rtl" >
-                  <div id="search-bar" className="w-full bg-white rounded-md shadow-lg" dir="rtl">
+                <div className="flex-1 mx-4" dir="rtl">
+                  <div
+                    id="search-bar"
+                    className="w-full bg-white rounded-md shadow-lg"
+                    dir="rtl"
+                  >
                     <form className="flex items-center justify-center p-2">
                       <input
                         type="text"
@@ -139,15 +146,15 @@ const Navbar: React.FC = () => {
                     className="block"
                   />
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
       <div
-        className={`fixed inset-0 bg-black bg-opacity-50 ease-in-out duration-300 ${isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
+        className={`fixed inset-0 bg-black bg-opacity-50 ease-in-out duration-300 ${
+          isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
         onClick={closeSidebar}
       ></div>
     </>

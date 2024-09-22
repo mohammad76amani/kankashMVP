@@ -6,8 +6,8 @@ const MidleBar = () => {
     <div>
       <section className="bg-zinc-50 overflow-hidden flex flex-row">
         <div className="max-w-screen-xl 2xl:max-w-screen-3xl px-4 md:px-6 mx-auto py-6 lg:py-12 space-y-12 flex flex-col justify-center">
-        <div className="flex flex-nowrap justify-center items-center gap-4 mx-auto overflow-x-auto scrollbar-hide snap-x h-48 px-2 gap-4">
-                <Link href="/">
+        <div className="flex flex-nowrap justify-center items-center mx-auto overflow-x-auto scrollbar-hide snap-x h-48 px-2 gap-4">
+                <Link href="/Store">
                   <Image
                     width={200}
                     height={150}
@@ -19,7 +19,7 @@ const MidleBar = () => {
                     انواع هارد اینترنال و اکسترنال
                   </p>
                 </Link>
-                <Link href="/">
+                <Link href="/Store">
                   <Image
                     width={200}
                     height={150}
@@ -32,7 +32,7 @@ const MidleBar = () => {
                   </p>
                 </Link>
 
-                <Link href="/">
+                <Link href="/Store">
                   <Image
                     width={140}
                     height={100}
@@ -44,7 +44,7 @@ const MidleBar = () => {
                     انواع لپتاپ استوک 
                   </p>
                 </Link>
-                <Link href="/">
+                <Link href="/Store">
                   <Image
                     width={150}
                     height={110}
@@ -56,7 +56,7 @@ const MidleBar = () => {
                   all in one
                   </p>
                 </Link>
-                <Link href="/">
+                <Link href="/Store">
                   <Image
                     width={140}
                     height={100}

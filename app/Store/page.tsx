@@ -25,7 +25,7 @@ const handleFilterChange = (filters:any) => {
         </p>
         
         <h1 className="text-xl lg:text-2xl text-center shadow-lg rounded-2xl w-auto py-2 text-gray-900 px-4 lg:px-8 bg-white">
-          بهترین کیفیت را با کترین قیمت تجربه کنید
+          بهترین کیفیت را با کمترین قیمت تجربه کنید
         </h1>
       </div>
 

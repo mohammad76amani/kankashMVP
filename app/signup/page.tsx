@@ -71,7 +71,7 @@ export default function SignUpPage() {
 
     return (
         <div className="flex h-screen items-center justify-center p-8 ">
-            <div className="w-full max-w-md bg-white p-8 rounded-lg border-t shadow-md mt-8 p-8">
+            <div className="w-full max-w-md bg-white p-8 rounded-lg border-t shadow-md mt-8">
                 <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">ثبت نام</h1>
                 
                 {/* Display message here */}

@@ -9,6 +9,7 @@ import ProductCard from "@/components/(ui)/ProductCard";
 import BlogCard from "@/components/(ui)/BlogCard";
 import connect from "@/lib/data";
 
+
 const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };
 const SLIDE_COUNT = 5;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
@@ -189,7 +190,7 @@ const Page = () => {
             </p>
             <button className="mb-2">
               <Link
-                href="/"
+                href="/Store"
                 className="px-8 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600 lg:px-10 lg:py-2"
               >
                 buy
@@ -221,7 +222,7 @@ const Page = () => {
             </p>
             <button className="mb-4">
               <Link
-                href="/"
+                href="/Store"
                 className="px-4 py-1 rounded-lg bg-orange-500 text-white my-2 hover:bg-orange-600 lg:px-6 lg:py-2"
               >
                 بریم ببینیم چیه🤔
