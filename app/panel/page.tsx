@@ -1,5 +1,8 @@
 "use client";
 
+import { Orders } from '@/lib/table';
+import axios from 'axios';
+import { log } from 'console';
 import React, { useState, useRef, useEffect } from 'react';
 
 const DraggableSidebar: React.FC = () => {
@@ -61,6 +64,18 @@ const DraggableSidebar: React.FC = () => {
             icon.classList.toggle('open');
         }
     };
+
+    let orders:any[] = [];
+   const  fetchOrders=() =>{
+          axios.get('api/users')
+            .then(response => {
+              console.log(response.data);
+            }).catch(error => { console.log(error) });
+        orders=Orders.filter((order) => {
+            return order.userId === 123;
+          });
+          console.log(orders);       
+      };
     
     
    
@@ -110,12 +125,11 @@ const DraggableSidebar: React.FC = () => {
             <div
                 ref={sidebarRef}
                 className={`fixed top-32  rounded-s-xl right-0 h-fit w-64 opacity-90 bg-gray-800 text-white transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
-            >
-                <div className="p-4">
+                    }`}>
+                <div className="p-4 flex flex-col items-end">
                     <h2 className="text-2xl font-bold mb-4 text-end pe-3">منوی کاربری</h2>
                     <ul>
-                        <li className="mb-2 text-end ">لیست سفارشات</li>
+                        <button className="mb-2 me-0 text-end hover:border-b-2 " onClick={fetchOrders}>لیست سفارشات</button>
                         <li className="mb-2 text-end ">پیگری سفارشات</li>
                     </ul>
                 </div>
