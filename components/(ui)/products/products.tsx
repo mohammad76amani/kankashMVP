@@ -22,7 +22,10 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [postStatus, setPostStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
-
+  const [cpu,setCpu] = useState('')
+  const [ram,setRam] = useState('')
+  const [gpu,setGpu] = useState('')
+  const [hard,setHard] = useState('')
   const formData = new FormData()
 
   // useEffect hook to fetch images and categories when component mounts
@@ -74,6 +77,10 @@ const Products = () => {
     const brandInput = event.currentTarget.querySelector('.inputBrand') as HTMLInputElement;
     const colorInput = event.currentTarget.querySelector('.inputColor') as HTMLInputElement;
     const categoryInput = event.currentTarget.querySelector('.inputCategory') as HTMLInputElement;
+    const cpuInput = event.currentTarget.querySelector('.inputCpu') as HTMLInputElement;
+    const ramInput = event.currentTarget.querySelector('.inputRam') as HTMLInputElement;
+    const gpuInput = event.currentTarget.querySelector('.inputGpu') as HTMLInputElement;
+    const hardInput = event.currentTarget.querySelector('.inputHard') as HTMLInputElement;
 
     // Append form data if all fields are filled
     if (priceInput.value && nameInput.value && desInput.value && desInput.value && brandInput.value && colorInput.value && categoryInput.value) {
@@ -83,10 +90,15 @@ const Products = () => {
       formData.append('color', colorInput.value);
       formData.append('category', categoryInput.value);
       formData.append('description', desInput.value);
+      formData.append('cpu', cpuInput.value);
+      formData.append('ram', ramInput.value);
+      formData.append('gpu', gpuInput.value);
+      formData.append('hard', hardInput.value);
     } 
 
     // Send POST request to add product
     try {
+      console.log(formData)
       const response = await axios.post('api/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -150,6 +162,10 @@ const Products = () => {
           <input type="text" placeholder=" قیمت" className="inputPrice w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
           <input type="text" placeholder=" برند" className="inputBrand w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
           <input type="text" placeholder=" رنگ" className="inputColor w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
+          <input type="text" placeholder=" گرافیک" className="inputGpu w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
+          <input type="text" placeholder=" هارد" className="inputHard w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
+          <input type="text" placeholder=" پردازنده" className="inputCpu w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
+          <input type="text" placeholder=" حافظه" className="inputRam w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-7" />
           <select
             onChange={handleCategorySelect}
             value={selectedCategory}

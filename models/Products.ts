@@ -23,7 +23,22 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-
+    cpu: {
+        type: String,
+        required: false,
+    },
+    ram: {
+        type: String,
+        required: false,
+    },
+    hard:{
+        type: String,
+        required: false,
+    },
+    gpu: {
+        type: String,
+        required: false,
+    },
     color: {
         type: String,
         required: true,

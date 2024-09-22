@@ -11,6 +11,8 @@ export default function MultiImageDropzoneUsage() {
   const [fileStates, setFileStates] = useState<FileState[]>([]);
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string, url: string }[]>([]);
   const { edgestore } = useEdgeStore();
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function updateFileProgress(key: string, progress: FileState['progress']) {
     setFileStates((fileStates) => {
@@ -28,28 +30,48 @@ export default function MultiImageDropzoneUsage() {
 
 
   async function handleSaveToMongoDB() {
-    const categorizedFiles = uploadedFiles.map(file => {
-      const category = file.name.split('-')[0];
-      const type = file.name.split('-')[1];
-      return {
-        name: file.name,
-        url: file.url,
-        type,
-        category,
-      };
-    });
+    if (uploadedFiles.length === 0) {
+      setErrorMessage('Please add at least one image before uploading.');
+      setSuccessMessage(null);
+      return;
+    }
 
-    await fetch('/api/uploadedFiles', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ files: categorizedFiles }),
-    });
+    try {
+      const categorizedFiles = uploadedFiles.map(file => {
+        const category = file.name.split('-')[0];
+        const type = file.name.split('-')[1];
+        return {
+          name: file.name,
+          url: file.url,
+          type,
+          category,
+        };
+      });
+
+      const response = await fetch('/api/uploadedFiles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ files: categorizedFiles }),
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Files uploaded successfully!');
+        setErrorMessage(null);
+      } else {
+        throw new Error('Failed to upload files');
+      }
+    } catch (error) {
+      setErrorMessage('Failed to upload files. Please try again.');
+      setSuccessMessage(null);
+    }
   }
 
+
+
   return (
-    <div>
+    <div className='flex flex-col'>
       <MultiImageDropzone
         value={fileStates}
         dropzoneOptions={{
@@ -86,16 +108,27 @@ export default function MultiImageDropzoneUsage() {
         }}
       />
 
-      <ul>
+      <ul >
         {uploadedFiles.map((file, index) => (
           <li key={index}>
             <strong>Name:</strong> {file.name}, <strong>URL:</strong> {file.url}
           </li>
         ))}
       </ul>
+      {successMessage && (
+        <div className="mt-4 p-2 bg-green-100 text-green-700 rounded">
+          {successMessage}
+        </div>
+      )}
+      {errorMessage && (
+        <div className="mt-4 p-2 bg-red-100 text-red-700 rounded">
+          {errorMessage}
+        </div>
+      )}
+
 
       {/* Button to save the categorized files to MongoDB */}
-      <button onClick={handleSaveToMongoDB}>Save to MongoDB</button>
+      <button className='py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg items-center mx-auto' onClick={handleSaveToMongoDB}>آپلود</button>
     </div>
   );
 }
