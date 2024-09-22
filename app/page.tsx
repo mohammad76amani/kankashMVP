@@ -1,3 +1,4 @@
+'use client'
 import Bubbles from "@/components/(ui)/Bubles";
 import EmblaCarousel from "@/components/(ui)/(header)/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
@@ -8,6 +9,8 @@ import MidleBar from "@/components/(ui)/MidleBar";
 import ProductCard from "@/components/(ui)/ProductCard";
 import BlogCard from "@/components/(ui)/BlogCard";
 import connect from "@/lib/data";
+import { Provider } from "react-redux";
+import { store } from "../lib/store";
 
 
 const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };
@@ -16,6 +19,7 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 const Page = () => {
   return (
+    
     <div className="flex flex-col w-full h-auto p-1 bg-gray-200 py-8 px-2 lg:py-12 lg:px-4">
       <Sidebar />
       <div className="flex flex-col w-full justify-center items-center bg-white shadow-lg rounded-lg py-4 px-2 lg:py-6 lg:px-4">
@@ -331,7 +335,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="flex overflow-x-auto space-x-4 p-4">
+        {/* <div className="flex overflow-x-auto space-x-4 p-4">
           <div className="shrink-0 w-fit h-fit  rounded-lg">
             {" "}
             <ProductCard />
@@ -356,7 +360,7 @@ const Page = () => {
             {" "}
             <ProductCard />
           </div>
-        </div>
+        </div> */}
 
         <div className="grid col-span-9 w-full mt-4 px-1 lg:px-4 ">
           <div className="w-full flex justify-center item-center">

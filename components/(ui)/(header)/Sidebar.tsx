@@ -1,16 +1,19 @@
 "use client";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Sidebar = () => {
   const [hovered, setHovered] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null >(null);
 
-  const categories = [
-    { name: "Laptops", vector: laptopSVG },
-    { name: "Desktops", vector: desktopSVG },
-    { name: "Accessories", vector: accessoriesSVG },
-  ];
+  const [categories, setCategories] = useState<any[]>([]);
 
+  useEffect(() => {
+    axios.get("/api/categories").then((response) => {
+      console.log(response.data);
+      setCategories(response.data);
+    });
+  }, []);
   
   const subcategories = [
     {
@@ -29,6 +32,7 @@ const Sidebar = () => {
     },
   ];
 
+ 
   return (
     <div
       className={`fixed my-24 z-40 md:my-4 lg:my-4 rounded-lg top-0 right-0 h-auto pr-2 bg-tranq  transition-all duration-500 ease-in-out ${

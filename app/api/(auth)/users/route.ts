@@ -22,7 +22,6 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
 
 
 }
-
 export const POST = async (req: NextRequest) => {
     await connect();
     if(!connect){

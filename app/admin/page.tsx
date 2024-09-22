@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'   
 import Image from "next/image"
-import Trending from "../../components/(ui)/trending/trending";
-import Banners from "../../components/(ui)/banners/banners";
-import Products from "../../components/(ui)/products/products";
-import UsersData from "@/components/(ui)/users/usersData";
-import Categories from "../../components/(ui)/categories/categories";
+import Trending from "../../components/(ui)/(admin)/(forms)/trending/trending";
+import Banners from "../../components/(ui)/(admin)/(forms)/banners/banners";
+import Products from "../../components/(ui)/(admin)/(forms)/products/products";
+import UsersData from "@/components/(ui)/(admin)/(forms)/users/usersData";
+import Categories from "../../components/(ui)/(admin)/(forms)/categories/categories";
 import { kankashInfo } from "@/lib/info";
-import TableComponent from "@/components/(ui)/table/table";
+import TableComponent from "@/components/(ui)/(admin)/(forms)/table/table";
 import FileUploadForm from "@/components/(ui)/(admin)/(forms)/FileUploadForm";
 import{Orders} from "@/lib/table";
 import { Divide } from "lucide-react";
